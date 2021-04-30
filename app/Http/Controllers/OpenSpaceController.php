@@ -24,7 +24,7 @@ class OpenSpaceController extends Controller
             'address' => 'required',
             'price' => 'required',
             'size'=> 'required',
-            'image'=>'required',
+            'picture'=>'required',
             
             ]);
             
@@ -33,9 +33,18 @@ class OpenSpaceController extends Controller
             $space->address=$request->input('address');
             $space->price=$request->input('price');
             $space->size=$request->input('size');
-            $space->image=$request->input('image');
+            
             $space->user_id=Auth::id();
             
+           
+                $filenamewithExt=$request->file('picture')->getClientOriginalName();
+                $filename =pathinfo($filenamewithExt, PATHINFO_FILENAME);
+                $extension = $request->file('picture')->getClientOriginalExtension();
+                $fileNameToStore= $filename.'_'.time().'.'.$extension;
+                $path=$request->file('picture')->storeAs('public/uploads',$fileNameToStore);
+                $space->image=$fileNameToStore;
+            
+           
             $space->save();
             return redirect()->route('home');
 

@@ -9,6 +9,7 @@
         <p>
             {{$item->address}}
         </p>
+        <img src="/storage/uploads/{{ $item->image }}" style="height: 300px; width: auto" />
     </div>
         
     @endforeach

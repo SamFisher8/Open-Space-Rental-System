@@ -6,7 +6,7 @@
             <h4>Rent a Space</h4>
         </div>
         <div class="card-body p-4">
-        <form action="{{route('store.post')}}" method="post">
+        <form action="{{route('store.post')}}" method="post" enctype="multipart/form-data">
             @csrf
             <label for="Name">Name</label>
             <input type="text" class="form-control mb-2" name="name" placeholder="Enter space name">
@@ -21,7 +21,7 @@
             <input type="text" min="1" max="999999" class="form-control mb-2" name="size" placeholder="Enter size">
 
             <label for="image">Upload Image</label>
-            <input type="file" accept="image/x-png,image/gif,image/jpeg" class="form-control mb-2" name="image">
+            <input type="file" accept="image/x-png,image/gif,image/jpeg" class="form-control mb-2" name="picture">
             <div class="card-footer">
                 <button class="btn btn-lg btn-outline-success float-right" type="submit">Rent Space</button>
             </div>
